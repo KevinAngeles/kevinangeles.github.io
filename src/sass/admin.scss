@@ -1,0 +1,21 @@
+// 1. Configuration and helpers
+@import "abstracts/_variables";
+@import "abstracts/_mixins";
+
+// 2. Vendors
+
+// 3. Base stuff
+
+// 4. Layout-related sections
+
+// 5. Components
+@import "components/_table";
+@import "components/_pagination";
+@import "components/_panel";
+
+// 6. Page-specific styles
+@import "pages/_admin";
+@import "pages/_user";
+@import "pages/_message";
+
+// 7. Themes

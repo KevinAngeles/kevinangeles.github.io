@@ -1,0 +1,92 @@
+.main {
+  &__container {
+    padding: 0 15px 50px;
+  }
+}
+.project {
+  display: grid;
+  grid-template-rows: auto auto auto auto auto auto;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  margin: 30px 0;
+  &__link {
+    grid-column: 1 / 3;
+    grid-row-end: span 1;
+    &-default {
+      @include default-link;
+    }
+  }
+  &__name {
+    margin: 15px 0;
+    max-width: 610px;
+    @include caption-title;
+  }
+  &__figure {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+  }
+  &__image {
+    border: 5px solid #58406f;
+  }
+  &__title {
+    grid-column: 1 / 3;
+    grid-row-end: span 1;
+    @include section-title;
+    &::after {
+      @include section-title-underline;
+    }
+  }
+  &__label {
+    grid-column: 1 / 2;
+    grid-row-end: span 1;
+    font-weight: 700;
+    color: #0a0909;
+    padding-left: 200px;
+  }
+  &__description {
+    grid-column: 2 / 3;
+    grid-row-end: span 1;
+    padding-right: 200px;
+  }
+  &__list {
+    grid-column: 2 / 3;
+    grid-row-end: span 1;
+    padding-top: 15px;
+    margin-left: 15px;
+    padding-right: 185px;
+    list-style-type: disc;
+  }
+}
+
+@include media-query-medium {
+  .project {
+    &__label {
+      padding-left: 50px;
+    }
+    &__description {
+      padding-right: 50px;
+    }
+    &__list {
+      padding-right: 35px;
+    }
+  }
+}
+
+@include media-query-small {
+  .project {
+    &__label {
+      padding-left: 50px;
+    }
+    &__description {
+      padding-right: 50px;
+    }
+    &__list {
+      padding-right: 35px;
+    }
+    &__image {
+      width: 100%;
+    }
+  }
+}

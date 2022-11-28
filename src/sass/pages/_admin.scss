@@ -1,0 +1,44 @@
+.main {
+  &__container {
+    padding: 0 15px 50px;
+    min-height: 570px;
+  }
+}
+
+.section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  &__link {
+    grid-column-end: span 1;
+    grid-row-end: span 1;
+    color: #337ab7;
+  }
+  &__figure {
+    text-align: center;
+    &:hover,
+    &:focus {
+      font-size: 30px;
+      color: #23527c;
+    }
+  }
+  &__caption {
+    color: inherit;
+    font-size: inherit;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+  }
+  &__image {
+    vertical-align: middle;
+  }
+}
+
+@include media-query-small {
+  .section {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 20px;
+  }
+}

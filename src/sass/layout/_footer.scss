@@ -1,0 +1,172 @@
+///* footer */
+// contact
+$footer-title-color: #f9f9f9;
+$footer-content-color: #c5c5c5;
+$footer-form-background-color: #4f4f4f;
+$footer-form-input-background-color: #393939;
+$footer-form-input-color: #9a9a9a;
+$footer-form-button-background-color: #3d3d3d;
+$footer-form-button-color: #eaeaea;
+// copyright
+$footer-copyright-background-color: #393939;
+
+.footer {
+  background-color: $footer-form-background-color;
+  &__contact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 20px 50px;
+    gap: 10px;
+  }
+  &__section {
+    grid-column-end: 1 span;
+  }
+  &__form {
+    display: grid;
+    grid-template-areas: "name-error-message email-error-message" "name-input email-input" "textarea-error-message textarea-error-message" "textarea-input textarea-input" "button-input .";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(2, minmax(20px, auto)) minmax(8px, auto) repeat(
+        2,
+        minmax(20px, auto)
+      );
+    margin-top: 8px;
+  }
+  &__input {
+    background-color: #393939;
+    border: 1px solid #393939;
+    border-radius: 0;
+    box-shadow: none;
+    color: #9a9a9a;
+    font-size: 12px;
+    font-style: normal;
+    width: 100%;
+    height: 28px;
+    padding: 3px 6px;
+    &::placeholder {
+      color: #9a9a9a;
+      font-size: 12px;
+      font-style: normal;
+      opacity: 1;
+      text-transform: capitalize;
+    }
+    &-name {
+      grid-area: name-input;
+      margin-right: 7px;
+      &-error {
+        grid-area: name-error-message;
+      }
+    }
+    &-email {
+      grid-area: email-input;
+      margin-left: 7px;
+      &-error {
+        grid-area: email-error-message;
+      }
+    }
+  }
+  &__textarea {
+    height: 127px;
+    &-error {
+      grid-area: textarea-error-message;
+    }
+    &--active {
+      height: 20px;
+    }
+    &-container {
+      grid-area: textarea-input;
+    }
+  }
+  &__button {
+    position: relative;
+    padding: 6px 13px;
+    background: #3d3d3d;
+    border: 0;
+    border-radius: 0;
+    text-shadow: none;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 400;
+    line-height: 16px;
+    font-size: 13px;
+    color: #eaeaea;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      background: #58406f;
+      color: #c5c5c5;
+      cursor: pointer;
+    }
+    &-container {
+      grid-area: button-input;
+      margin-top: 5px;
+    }
+  }
+  &__error {
+    color: #cfafee;
+    min-height: 20px;
+    margin: 2px 0;
+    display: none;
+    &--active {
+      display: block;
+    }
+  }
+  &__title {
+    color: $footer-title-color;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 30px;
+    text-transform: uppercase;
+    margin: 20px 0 0;
+  }
+  &__description {
+    color: $footer-content-color;
+    margin-top: 30px;
+  }
+  &__copyright {
+    grid-column: 1 / -1;
+    background-color: $footer-copyright-background-color;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px 0;
+    &-detail {
+      color: #c5c5c5;
+      font-size: 12px;
+    }
+  }
+  &__social {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 75px;
+    &-link {
+      display: block;
+      width: 35px;
+      height: 40px;
+      color: #c5c5c5;
+      &:hover {
+        color: #fff;
+      }
+    }
+    &-svg {
+      width: inherit;
+      height: inherit;
+    }
+  }
+}
+@include media-query-small {
+  .footer {
+    &__contact {
+      grid-template-columns: 1fr;
+    }
+    &__form {
+      grid-template-columns: 1fr;
+      grid-template-areas: "name-error-message" "name-input" "email-error-message" "email-input" "textarea-error-message" "textarea-input" "button-input";
+    }
+    &__input-name,
+    &__input-email {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+}

@@ -1,0 +1,87 @@
+.main {
+  &__container {
+    display: grid;
+    padding: 0 15px 50px;
+    grid-template-areas: "title title" "info map";
+    grid-template-columns: 1fr 705px;
+  }
+  &__title {
+    grid-area: title;
+  }
+}
+
+.map {
+  grid-area: map;
+  padding: 0 15px;
+  text-align: center;
+  color: #333333;
+  &__title {
+    @include section-title;
+    &::after {
+      @include section-title-underline;
+    }
+  }
+  &__canvas {
+    display: inline-block;
+    height: 500px;
+    width: 650px;
+  }
+}
+
+.info {
+  grid-area: info;
+  padding: 0 15px;
+  text-align: center;
+  color: #333333;
+  &__title {
+    @include section-title;
+    &::after {
+      @include section-title-underline;
+    }
+  }
+  &__name {
+    color: #333333;
+    font-weight: bold;
+  }
+  &__social {
+    &-link {
+      color: #337ab7;
+      text-decoration: none;
+      &:hover,
+      &:focus {
+        color: #23527c;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+@include media-query-medium {
+  .main {
+    &__container {
+      grid-template-columns: 1fr 540px;
+    }
+  }
+  .map {
+    &__canvas {
+      height: 350px;
+      width: 500px;
+    }
+  }
+}
+
+@include media-query-small {
+  .main {
+    &__container {
+      grid-template-areas: "title" "info" "map";
+      grid-template-columns: 1fr;
+      padding-bottom: 20px;
+    }
+  }
+  .map {
+    &__canvas {
+      height: 200px;
+      width: 340px;
+    }
+  }
+}

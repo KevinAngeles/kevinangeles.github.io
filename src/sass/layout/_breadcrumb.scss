@@ -1,0 +1,30 @@
+.breadcrumb {
+  background-color: #f3f3f3;
+  border-bottom: 1px solid #e0e0e0;
+  border-radius: 0;
+  border-top: 1px solid #e0e0e0;
+  color: #9f9f9f;
+  font-family: "Muli", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  list-style: none;
+  margin-bottom: 0;
+  padding: 12px 0 12px 20px;
+  text-transform: capitalize;
+
+  &__item {
+    display: inline-block;
+  }
+
+  &__link {
+    background-color: transparent;
+    text-decoration: none;
+    color: #777;
+    &:hover,
+    &:active {
+      text-decoration: underline;
+      outline: 0;
+    }
+  }
+}

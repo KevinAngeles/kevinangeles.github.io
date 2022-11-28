@@ -1,0 +1,68 @@
+///* Common elements */
+html,
+body {
+  width: 100%;
+}
+
+body {
+  background: none repeat scroll 0% 0% $body-background-color;
+  color: $body-color;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+///* End Common elements*/
+
+.container {
+  max-width: 981px;
+  margin: 0 auto;
+  background-color: $container-background-color;
+  height: 100%;
+}
+
+.main {
+  &__title {
+    color: rgb(88, 64, 111);
+    cursor: auto;
+    display: block;
+    font-family: Muli, sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 40px;
+    text-shadow: rgba(255, 255, 255, 0.247059) 0px 1px 0px;
+    margin: 20px 0 20px;
+    text-align: center;
+    text-transform: capitalize;
+  }
+}
+
+.leaflet-container {
+  height:500px;
+  width:650px;
+}
+
+@include media-query-medium {
+  .container {
+    width: 750px;
+  }
+  .leaflet-container {
+    height:350px;
+    width:500px;
+  }
+}
+
+@include media-query-small {
+  .leaflet-container {
+    height: 200px;
+    width: 340px;
+  }
+}

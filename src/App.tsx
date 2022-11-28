@@ -1,26 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { AppRoute, appLanguage } from './const';
+import * as views from './views';
+import 'normalize.css';
+import 'typeface-open-sans';
+import { AppLayout } from './modules/layout';
+import { LocalizedRouter, LocalizedSwitch } from './modules/i18n';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
-export default App;
+export const App: React.FC = () => (
+  <LocalizedRouter
+    RouterComponent={BrowserRouter}
+    defaultLanguage={appLanguage.English}
+  >
+    <AppLayout>
+      <LocalizedSwitch>
+        <Route path={AppRoute.Home} element={<views.Home/>}/>
+        <Route path={AppRoute.About} element={<views.About/>}/>
+        <Route path={AppRoute.Portfolio} element={<views.Portfolio/>}/>
+        <Route path={AppRoute.Contact} element={<views.Contact/>}/>
+        <Route path="*" element={<views.GeneralError />}/>
+      </LocalizedSwitch>
+    </AppLayout>
+  </LocalizedRouter>
+);

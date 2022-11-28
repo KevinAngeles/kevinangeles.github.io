@@ -1,0 +1,73 @@
+@mixin media-query-small {
+  @media only screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin media-query-medium {
+  @media only screen and (min-width: 768px) and (max-width: 974px) {
+    @content;
+  }
+}
+
+@mixin media-query-large {
+  @media only screen and (min-width: 974px) {
+    @content;
+  }
+}
+
+@mixin default-link {
+  color: #337ab7;
+  text-decoration: none;
+  &:hover,
+  &:focus {
+    color: #23527c;
+    text-decoration: underline;
+  }
+}
+
+@mixin section-title($title-color: $section-title-color) {
+  color: $title-color;
+  font-size: 18px;
+  line-height: 31px;
+  margin: 0 0 10px 0;
+  position: relative;
+  padding: 0 0 10px 0;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-align: left;
+}
+
+@mixin section-title-underline($underline-color: $section-title-underline-color) {
+  content: "";
+  display: block;
+  background-color: $underline-color;
+  height: 4px;
+  width: 40px;
+  margin-top: 5px;
+}
+
+@mixin section-title2($color: rgb(119, 119, 119)) {
+  font-family: "Muli", sans-serif;
+  font-weight: 500;
+  line-height: 26.4px;
+  color: $color;
+  font-size: 20px;
+}
+
+@mixin caption-title($width: 100%, $height: 30px) {
+  font-family: "Muli", sans-serif;
+  color: #f9f9f9;
+  background: rgba(0, 0, 0, 0.75);
+  height: $height;
+  width: $width;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin nav-li-active {
+  background-color: $nav-list-item-active-background-color;
+  border-color: $nav-list-item-active-border-color;
+  color: $nav-list-item-active-color;
+}
