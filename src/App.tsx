@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { HashRouter, Route } from 'react-router-dom';
 import { AppRoute, appLanguage } from './const';
 import * as views from './views';
 import 'normalize.css';
@@ -9,7 +9,7 @@ import { LocalizedRouter, LocalizedSwitch } from './modules/i18n';
 
 export const App: React.FC = () => (
   <LocalizedRouter
-    RouterComponent={BrowserRouter}
+    RouterComponent={HashRouter}
     defaultLanguage={appLanguage.English}
   >
     <AppLayout>

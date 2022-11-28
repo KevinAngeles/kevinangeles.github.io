@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, useParams, useLocation, BrowserRouter, Routes } from 'react-router-dom';
+import { Route, useParams, useLocation, Routes, HashRouter } from 'react-router-dom';
 import { Language, availableLocales, ILanguage } from '../../../const';
 
 export const LanguageContext = React.createContext<ILanguage | null>(null)
@@ -10,7 +10,7 @@ interface IRoute {
 }
 
 interface Props extends IRoute {
-  RouterComponent: typeof BrowserRouter;
+  RouterComponent: typeof HashRouter;
 }
 
 const LocalizedRoute: React.FC<IRoute> = ({
