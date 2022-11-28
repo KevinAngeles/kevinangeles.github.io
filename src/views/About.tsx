@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { LanguageContext } from '../modules/i18n';
 import { ILanguage, translation } from '../const';
-import { translateRouteKeysToLocationPath } from '../utils';
+import { translateLocationPathToRouteKeys, translateRouteKeysToLocationPath } from '../utils';
 import { AboutCertificateWithLinkStrings } from '../modules/i18n/localizations/localizationTypes/AboutStrings';
 import { Breadcrumbs } from '../modules/layout/components/Breadcrumbs';
+import { useLocation } from 'react-router-dom';
 
 export const About: React.FC = () => {
   const {
@@ -12,11 +13,28 @@ export const About: React.FC = () => {
     defaultLanguage
   } = useContext(LanguageContext) as ILanguage;
 
+  const location = useLocation();
+  const routeKeys = translateLocationPathToRouteKeys(location.pathname+location.hash,locale,defaultLanguage);
+  const hashIndex = routeKeys.indexOf('#');
+  const hashKey = hashIndex >= 0 ? routeKeys.substring(hashIndex + 1) : '';
+  const refs = useRef<({[k:string]: HTMLHeadingElement|null})[]>([]);
   const aboutTranslation = translation[locale]['about'];
   const routesTranslation = translation[locale]['routes'];
   const educationTranslation = aboutTranslation['education'];
   const certificatesTranslation = aboutTranslation['certificates'];
-  
+
+  useEffect(() => {
+    setTimeout(() => {
+      refs.current.some( (singleRef) => {
+        if(singleRef.hasOwnProperty(hashKey)) {
+          (singleRef[hashKey] as HTMLHeadingElement).scrollIntoView({behavior:'smooth',block:'start',inline:'center'});
+          return true;
+        }
+        return false;
+      });  
+    },0);
+  },[]); // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
     <main className="main">
       <HelmetProvider>
@@ -41,7 +59,10 @@ export const About: React.FC = () => {
         <section className="universities">
           <h2
             id={routesTranslation['about']['subpath']['education']['path']}
-            className="universities__title">{routesTranslation['about']['subpath']['education']['details']['name']}
+            className="universities__title"
+            ref={ educationRef => refs.current[0] = { 'education': educationRef } }
+          >
+            {routesTranslation['about']['subpath']['education']['details']['name']}
           </h2>
           <div className="university university__texas">
             <h3 className="university__name">{educationTranslation['utexas']['name']}</h3>
@@ -54,8 +75,8 @@ export const About: React.FC = () => {
             <p className="university__label">{educationTranslation['utexas']['activities']['label']}</p>
             <ul className="university__list">
               {
-                educationTranslation['utexas']['activities']['values'].map( (activity) => (
-                  <li className="university__item">{activity}</li>                    
+                educationTranslation['utexas']['activities']['values'].map( (activity,index) => (
+                  <li key={index} className="university__item">{activity}</li>                    
                 ))
               }
             </ul>
@@ -85,8 +106,8 @@ export const About: React.FC = () => {
             <p className="university__label">{educationTranslation['usil']['activities']['label']}</p>
             <ul className="university__list">
               {
-                educationTranslation['usil']['activities']['values'].map( (activity) => (
-                  <li className="university__item">{activity}</li>
+                educationTranslation['usil']['activities']['values'].map( (activity, index) => (
+                  <li key={index} className="university__item">{activity}</li>
                 ))
               }
             </ul>
@@ -111,11 +132,14 @@ export const About: React.FC = () => {
         <section className="certificates">
           <h2
             id={routesTranslation['about']['subpath']['certificates']['path']}
-            className="certificates__title">{routesTranslation['about']['subpath']['certificates']['details']['name']}
+            className="certificates__title"
+            ref={ certificatesRef => refs.current[1] = { 'certificates': certificatesRef } }
+          >
+            {routesTranslation['about']['subpath']['certificates']['details']['name']}
           </h2>
           {
-            certificatesTranslation.map( (certificate) => (
-              <div className="certificate">
+            certificatesTranslation.map( (certificate,index) => (
+              <div key={index} className="certificate">
                 <h3 className="certificate__name" lang={certificate['lang']}>
                   { certificate['title'] }
                 </h3>
@@ -136,7 +160,7 @@ export const About: React.FC = () => {
                         <figcaption className="certificate__caption">{ certificate['caption'] }</figcaption>
                       </figure>
                     </a>  
-                  ) 
+                  )
                     :
                   (
                     <figure>
@@ -151,8 +175,8 @@ export const About: React.FC = () => {
                   )
                 }
                 {
-                  certificate['data'].map( (data) => (
-                    <p>{ data['label'] }: { data['value'] }</p>
+                  certificate['data'].map( (data,index) => (
+                    <p key={index}>{ data['label'] }: { data['value'] }</p>
                   ))
                 }
               </div>
