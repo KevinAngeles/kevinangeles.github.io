@@ -18,12 +18,28 @@ export type ProjectDetailsStrings = {
 }
 
 export type ProjectStrings = {
-  'xlsx': {
+  /*'xlsx': {
     'path': string,
     'details': ProjectDetailsStrings,
   },
+  'bridges': {
+    'path': string,
+    'details': ProjectDetailsStrings,
+  },*/
   'algovisual': {
     'path': string,
     'details': ProjectDetailsStrings,
-  }
+  },
+  /*'nytredux': {
+    'path': string,
+    'details': ProjectDetailsStrings,
+  },*/
+  'hangman': {
+    'path': string,
+    'details': ProjectDetailsStrings,
+  },
+  /*'linass': {
+    'path': string,
+    'details': ProjectDetailsStrings,
+  }*/
 }
