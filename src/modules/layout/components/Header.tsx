@@ -40,7 +40,7 @@ export const Header = () => {
 
   const toggleNavbar = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     setNavCollapsed(!navCollapsed);
-  }
+  };
 
   return (
     <header className="header">

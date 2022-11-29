@@ -26,7 +26,7 @@ export const Home: React.FC = () => {
     };
   });
   return (
-    <main className="main">
+    <main className="home-main">
       <HelmetProvider>
         <Helmet>
           <link rel="next" href={`/#${translateRouteKeysToLocationPath('about',locale,defaultLanguage,true)}`} />
@@ -42,54 +42,54 @@ export const Home: React.FC = () => {
           <link rel="stylesheet" href="/css/index.css" />
         </Helmet>
       </HelmetProvider>
-      <figure className="slide">
+      <figure className="home-slide">
         <img
           src={homeTranslation['slide.src']}
           alt={homeTranslation['slide.alt']}
-          className="slide__image"
+          className="home-slide__image"
         />
-        <figcaption className="slide__overlay">
-          <p className="slide__description">{homeTranslation['slide.caption']}</p>
+        <figcaption className="home-slide__overlay">
+          <p className="home-slide__description">{homeTranslation['slide.caption']}</p>
         </figcaption>
       </figure>
-      <div className="main__container">
-        <section className="service">
-          <figure className="service__card service__card--dark-purple">
+      <div className="home-main__container">
+        <section className="home-service">
+          <figure className="home-service__card home-service__card--dark-purple">
             <img
               src={homeTranslation['service.backend.src']}
               alt={homeTranslation['service.backend.alt']}
-              className="service__image"
+              className="home-service__image"
             />
-            <figcaption className="service__caption">
-              <p className="service__name">{homeTranslation['service.backend.title']}</p>
-              <p className="service__description">{homeTranslation['service.backend.description']}</p>
+            <figcaption className="home-service__caption">
+              <p className="home-service__name">{homeTranslation['service.backend.title']}</p>
+              <p className="home-service__description">{homeTranslation['service.backend.description']}</p>
             </figcaption>
           </figure>
-          <figure className="service__card service__card--regular-purple">
+          <figure className="home-service__card home-service__card--regular-purple">
             <img
               src={homeTranslation['service.frontend.src']}
               alt={homeTranslation['service.frontend.alt']}
-              className="service__image"
+              className="home-service__image"
             />
-            <figcaption className="service__caption">
-              <p className="service__name">{homeTranslation['service.frontend.title']}</p>
-              <p className="service__description">{homeTranslation['service.frontend.description']}</p>
+            <figcaption className="home-service__caption">
+              <p className="home-service__name">{homeTranslation['service.frontend.title']}</p>
+              <p className="home-service__description">{homeTranslation['service.frontend.description']}</p>
             </figcaption>
           </figure>
-          <figure className="service__card service__card--light-purple">
+          <figure className="home-service__card home-service__card--light-purple">
             <img
               src={homeTranslation['service.versioncontrol.src']}
               alt={homeTranslation['service.versioncontrol.alt']}
-              className="service__image"
+              className="home-service__image"
             />
-            <figcaption className="service__caption">
-              <p className="service__name">{homeTranslation['service.versioncontrol.title']}</p>
-              <p className="service__description">
+            <figcaption className="home-service__caption">
+              <p className="home-service__name">{homeTranslation['service.versioncontrol.title']}</p>
+              <p className="home-service__description">
                 {homeTranslation['service.versioncontrol.description']}
                 <a
                   href="https://github.com/KevinAngeles/"
                   title={homeTranslation['service.versioncontrol.link_title']}
-                  className="service__link"
+                  className="home-service__link"
                 >
                   {homeTranslation['service.versioncontrol.link_content']}
                 </a>
@@ -97,9 +97,9 @@ export const Home: React.FC = () => {
             </figcaption>
           </figure>
         </section>
-        <section className="project">
-          <h2 className="project__title">{homeTranslation['projects.title']}</h2>
-          <div className="project__container">
+        <section className="home-project">
+          <h2 className="home-project__title">{homeTranslation['projects.title']}</h2>
+          <div className="home-project__container">
             {
               projects.map( (project) => {
                 return (
@@ -107,14 +107,14 @@ export const Home: React.FC = () => {
                     to={project['navigation.url']}
                     key={project['name']}
                     title={project['navigation.title']}
-                    className="project_link">
-                    <figure className="project__card">
+                    className="home-project_link">
+                    <figure className="home-project__card">
                       <img
                         src={project['image.src']}
                         alt={project['image.alt']}
-                        className="project__image"
+                        className="home-project__image"
                       />
-                      <figcaption className="project__caption">{project['name']}</figcaption>
+                      <figcaption className="home-project__caption">{project['name']}</figcaption>
                     </figure>
                   </Link>
                 );

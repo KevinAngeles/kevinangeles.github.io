@@ -1,134 +1,148 @@
-.main {
-  &__container {
-    padding: 0 15px;
-  }
-}
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
 
-.slide {
-  position: relative;
-  &__image {
-    width: 100%;
-  }
-  &__overlay {
-    position: absolute;
-    bottom: 20%;
-    right: 0;
-  }
-  &__description {
-    background: rgba(0, 0, 0, 0.52);
-    padding: 20px 23px;
-    font-size: 27px;
-    line-height: 34px;
-    text-transform: uppercase;
-    color: #fff;
-  }
-}
-
-.service {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  height: 425px;
-  padding-top: 50px;
-  color: $service-color;
-  &__card {
-    text-align: center;
-    &--dark-purple {
-      background-color: #58406f;
+.home- {
+  &main {
+    &__title {
+      @include main-title;
     }
-    &--regular-purple {
-      background-color: #61467a;
-    }
-    &--light-purple {
-      background-color: #694c85;
+    &__container {
+      padding: 0 15px;
     }
   }
-  &__caption {
-    padding: 0 10px;
-  }
-  &__name {
-    font-size: 14px;
-    margin: 24px 10px 27px;
-    text-transform: uppercase;
-  }
-  &__link {
-    color: #fff;
-    font-family: "Muli", sans-serif;
-    font-weight: bold;
-    text-decoration: underline;
-  }
-}
-
-.project {
-  padding: 50px 0;
-  &__title {
-    @include section-title;
-    &::after {
-      @include section-title-underline;
-    }
-  }
-  &__card {
+  
+  &slide {
     position: relative;
-    text-align: center;
+    &__image {
+      width: 100%;
+    }
+    &__overlay {
+      position: absolute;
+      bottom: 20%;
+      right: 0;
+    }
+    &__description {
+      background: rgba(0, 0, 0, 0.52);
+      padding: 20px 23px;
+      font-size: 27px;
+      line-height: 34px;
+      text-transform: uppercase;
+      color: #fff;
+    }
   }
-  &__container {
+  
+  &service {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    justify-items: center;
-    row-gap: 20px;
+    height: 425px;
+    padding-top: 50px;
+    color: $service-color;
+    &__card {
+      text-align: center;
+      &--dark-purple {
+        background-color: #58406f;
+      }
+      &--regular-purple {
+        background-color: #61467a;
+      }
+      &--light-purple {
+        background-color: #694c85;
+      }
+    }
+    &__caption {
+      padding: 0 10px;
+    }
+    &__name {
+      font-size: 14px;
+      margin: 24px 10px 27px;
+      text-transform: uppercase;
+    }
+    &__link {
+      color: #fff;
+      font-family: "Muli", sans-serif;
+      font-weight: bold;
+      text-decoration: underline;
+    }
   }
-  &__caption {
-    @include caption-title;
-  }
-  &__link {
-    text-decoration: none;
-    grid-column-end: span 1;
-  }
-  &__image {
-    width: 287px;
-    height: 230px;
-    border: 3px solid #58406f;
-    display: inline-block;
-    vertical-align: middle;
+  
+  &project {
+    padding: 50px 0;
+    &__title {
+      @include section-title;
+      &::after {
+        @include section-title-underline;
+      }
+    }
+    &__card {
+      position: relative;
+      text-align: center;
+    }
+    &__container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      justify-items: center;
+      row-gap: 20px;
+    }
+    &__caption {
+      @include caption-title;
+    }
+    &__link {
+      text-decoration: none;
+      grid-column-end: span 1;
+    }
+    &__image {
+      width: 287px;
+      height: 230px;
+      border: 3px solid #58406f;
+      display: inline-block;
+      vertical-align: middle;
+    }
   }
 }
 
 @include media-query-small {
-  .slide {
-    &__description {
-      font-size: 16px;
-      line-height: 16px;
+  .home- {
+    &slide {
+      &__description {
+        font-size: 16px;
+        line-height: 16px;
+      }
     }
-  }
-  .service {
-    grid-template-columns: 1fr;
-    height: auto;
-  }
-  .project {
-    &__container {
+    &service {
       grid-template-columns: 1fr;
-    }
-    &__image {
-      width: 100%;
       height: auto;
+    }
+    &project {
+      &__container {
+        grid-template-columns: 1fr;
+      }
+      &__image {
+        width: 100%;
+        height: auto;
+      }
     }
   }
 }
 
 @include media-query-medium {
-  .project {
-    &__image {
-      width: 210px;
-      height: 170px;
+  .home- {
+    &project {
+      &__image {
+        width: 210px;
+        height: 170px;
+      }
     }
   }
 }
 
 @include media-query-small {
-  .service__name {
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  .service__card {
-    padding-bottom: 20px;
+  .home- {
+    &service__name {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    &service__card {
+      padding-bottom: 20px;
+    }
   }
 }

@@ -1,3 +1,6 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
 .site-navigation {
   grid-area: navigation;
   &__list {

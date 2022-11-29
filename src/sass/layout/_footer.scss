@@ -1,14 +1,5 @@
-///* footer */
-// contact
-$footer-title-color: #f9f9f9;
-$footer-content-color: #c5c5c5;
-$footer-form-background-color: #4f4f4f;
-$footer-form-input-background-color: #393939;
-$footer-form-input-color: #9a9a9a;
-$footer-form-button-background-color: #3d3d3d;
-$footer-form-button-color: #eaeaea;
-// copyright
-$footer-copyright-background-color: #393939;
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
 
 .footer {
   background-color: $footer-form-background-color;

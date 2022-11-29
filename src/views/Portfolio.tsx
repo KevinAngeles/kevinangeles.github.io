@@ -34,7 +34,7 @@ export const Portfolio: React.FC = () => {
   },[]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <main className="main">
+    <main className="portfolio-main">
       <HelmetProvider>
         <Helmet>
           <link rel="prev" href={`/#${translateRouteKeysToLocationPath(AppRoute.About,locale,defaultLanguage,true)}`} />
@@ -48,52 +48,51 @@ export const Portfolio: React.FC = () => {
             name="keywords"
             content={portfolioTranslation['head.keywords']}
           />
-          <link rel="stylesheet" href="/css/portfolio.css" />
         </Helmet>
       </HelmetProvider>
       <Breadcrumbs language={locale} defaultLanguage={defaultLanguage} />
-      <div className="main__container">
-        <h1 className="main__title">{portfolioTranslation['title']}</h1>
+      <div className="portfolio-main__container">
+        <h1 className="portfolio-main__title">{portfolioTranslation['title']}</h1>
         {
           projects.map( (project,index) => {
             const projectId = project[0];
             const projectDetails = project[1]['details'];
             return (
-              <section key={projectId} className="project">
+              <section key={projectId} className="portfolio-project">
                 <h2
                   id={projectId}
-                  className="project__title"
+                  className="portfolio-project__title"
                   ref={ projectRef => refs.current[index] = { [projectId]: projectRef } }
                 >
                   { projectDetails['name'] }
                 </h2>
                 <a
-                  className="project__link"
+                  className="portfolio-project__link"
                   href={projectDetails['demo.link']}
                   rel="nofollow"
                 >
-                  <figure className="project__figure">
+                  <figure className="portfolio-project__figure">
                     <img
-                    className="project__image"
+                    className="portfolio-project__image"
                       src={projectDetails['image.src']}
                       title={projectDetails['image.title']}
                       alt={projectDetails['image.alt']}
                     />
-                    <figcaption className="project__name">
+                    <figcaption className="portfolio-project__name">
                       {projectDetails['name']}
                     </figcaption>
                   </figure>
                 </a>
-                <p className="project__label">{projectDetails['description.label']}</p>
-                <p className="project__description">{projectDetails['description.text']}</p>
-                <p className="project__label">{projectDetails['code.label']}</p>
-                <p className="project__description">
+                <p className="portfolio-project__label">{projectDetails['description.label']}</p>
+                <p className="portfolio-project__description">{projectDetails['description.text']}</p>
+                <p className="portfolio-project__label">{projectDetails['code.label']}</p>
+                <p className="portfolio-project__description">
                   {
                     (projectDetails['code.link'].length > 0) ?
                     (
                       <a
                         href={projectDetails['code.link']}
-                        className="project__link-default"
+                        className="portfolio-project__link-default"
                       >{projectDetails['code.link']}</a>
                     )
                       :
@@ -102,18 +101,18 @@ export const Portfolio: React.FC = () => {
                     )
                   }
                 </p>
-                <p className="project__label">{projectDetails['demo.label']}</p>
-                <p className="project__description">
+                <p className="portfolio-project__label">{projectDetails['demo.label']}</p>
+                <p className="portfolio-project__description">
                   <a
                     href={projectDetails['demo.link']}
-                    className="project__link-default"
+                    className="portfolio-project__link-default"
                   >{projectDetails['demo.link']}</a>
                 </p>
-                <p className="project__label">{projectDetails['technology.label']}</p>
-                <ul className="project__list">
+                <p className="portfolio-project__label">{projectDetails['technology.label']}</p>
+                <ul className="portfolio-project__list">
                   {
                     projectDetails['technology.items'].map( (item) => (
-                      <li key={item} className="project__item">{ item }</li>
+                      <li key={item} className="portfolio-project__item">{ item }</li>
                     ))
                   }
                 </ul>

@@ -1,3 +1,5 @@
+@use 'variables' as *;
+
 @mixin media-query-small {
   @media only screen and (max-width: 768px) {
     @content;
@@ -24,6 +26,20 @@
     color: #23527c;
     text-decoration: underline;
   }
+}
+
+@mixin main-title {
+  color: rgb(88, 64, 111);
+  cursor: auto;
+  display: block;
+  font-family: Muli, sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+  line-height: 40px;
+  text-shadow: rgba(255, 255, 255, 0.247059) 0px 1px 0px;
+  margin: 20px 0 20px;
+  text-align: center;
+  text-transform: capitalize;
 }
 
 @mixin section-title($title-color: $section-title-color) {

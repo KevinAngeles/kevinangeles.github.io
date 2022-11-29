@@ -1,6 +1,4 @@
 // 1. Configuration and helpers
-@import "abstracts/_variables";
-@import "abstracts/_mixins";
 
 // 2. Vendors
 
@@ -9,10 +7,8 @@
 // 4. Layout-related sections
 
 // 5. Components
-@import "components/_panel";
-@import "components/_alert";
 
 // 6. Page-specific styles
-@import "pages/_login";
+@use 'pages/contact';
 
 // 7. Themes

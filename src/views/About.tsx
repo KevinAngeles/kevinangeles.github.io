@@ -36,7 +36,7 @@ export const About: React.FC = () => {
   },[]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <main className="main">
+    <main className="about-main">
       <HelmetProvider>
         <Helmet>
           <link rel="prev" href={`/#${translateRouteKeysToLocationPath(AppRoute.Home,locale,defaultLanguage,true)}`} />
@@ -50,78 +50,77 @@ export const About: React.FC = () => {
             name="keywords"
             content={aboutTranslation['head.keywords']}
           />
-          <link rel="stylesheet" href="/css/about.css" />
         </Helmet>
       </HelmetProvider>
       <Breadcrumbs language={locale} defaultLanguage={defaultLanguage} />
-      <div className="main__container">
-        <h1 className="main__title">{aboutTranslation['title']}</h1>
-        <section className="universities">
+      <div className="about-main__container">
+        <h1 className="about-main__title">{aboutTranslation['title']}</h1>
+        <section className="about-universities">
           <h2
             id={routesTranslation['about']['subpath']['education']['path']}
-            className="universities__title"
+            className="about-universities__title"
             ref={ educationRef => refs.current[0] = { 'education': educationRef } }
           >
             {routesTranslation['about']['subpath']['education']['details']['name']}
           </h2>
-          <div className="university university__texas">
-            <h3 className="university__name">{educationTranslation['utexas']['name']}</h3>
-            <p className="university__label">{educationTranslation['utexas']['location']['label']}</p>
-            <p className="university__description">{educationTranslation['utexas']['location']['value']}</p>
-            <p className="university__label">{educationTranslation['utexas']['major']['label']}</p>
-            <p className="university__description">{educationTranslation['utexas']['major']['value']}</p>
-            <p className="university__label">{educationTranslation['utexas']['minor']['label']}</p>
-            <p className="university__description">{educationTranslation['utexas']['minor']['value']}</p>
-            <p className="university__label">{educationTranslation['utexas']['activities']['label']}</p>
-            <ul className="university__list">
+          <div className="about-university about-university__texas">
+            <h3 className="about-university__name">{educationTranslation['utexas']['name']}</h3>
+            <p className="about-university__label">{educationTranslation['utexas']['location']['label']}</p>
+            <p className="about-university__description">{educationTranslation['utexas']['location']['value']}</p>
+            <p className="about-university__label">{educationTranslation['utexas']['major']['label']}</p>
+            <p className="about-university__description">{educationTranslation['utexas']['major']['value']}</p>
+            <p className="about-university__label">{educationTranslation['utexas']['minor']['label']}</p>
+            <p className="about-university__description">{educationTranslation['utexas']['minor']['value']}</p>
+            <p className="about-university__label">{educationTranslation['utexas']['activities']['label']}</p>
+            <ul className="about-university__list">
               {
                 educationTranslation['utexas']['activities']['values'].map( (activity,index) => (
-                  <li key={index} className="university__item">{activity}</li>                    
+                  <li key={index} className="about-university__item">{activity}</li>                    
                 ))
               }
             </ul>
-            <figure className="university__picture1">
+            <figure className="about-university__picture1">
               <img
-                className="university__image1"
+                className="about-university__image1"
                 src={educationTranslation['utexas']['logo']['source']}
                 title={educationTranslation['utexas']['logo']['title']}
                 alt={educationTranslation['utexas']['logo']['alt']}
               />
             </figure>
-            <figure className="university__picture2">
+            <figure className="about-university__picture2">
               <img
-                className="university__image2"
+                className="about-university__image2"
                 src={educationTranslation['utexas']['photo']['source']}
                 title={educationTranslation['utexas']['photo']['title']}
                 alt={educationTranslation['utexas']['photo']['alt']}
               />
             </figure>
           </div>
-          <div className="university university__usil">
-            <h3 className="university__name">{educationTranslation['usil']['name']}</h3>
-            <p className="university__label">{educationTranslation['usil']['location']['label']}</p>
-            <p className="university__description">{educationTranslation['usil']['location']['value']}</p>
-            <p className="university__label">{educationTranslation['usil']['major']['label']}</p>
-            <p className="university__description">{educationTranslation['usil']['major']['value']}</p>
-            <p className="university__label">{educationTranslation['usil']['activities']['label']}</p>
-            <ul className="university__list">
+          <div className="about-university about-university__usil">
+            <h3 className="about-university__name">{educationTranslation['usil']['name']}</h3>
+            <p className="about-university__label">{educationTranslation['usil']['location']['label']}</p>
+            <p className="about-university__description">{educationTranslation['usil']['location']['value']}</p>
+            <p className="about-university__label">{educationTranslation['usil']['major']['label']}</p>
+            <p className="about-university__description">{educationTranslation['usil']['major']['value']}</p>
+            <p className="about-university__label">{educationTranslation['usil']['activities']['label']}</p>
+            <ul className="about-university__list">
               {
                 educationTranslation['usil']['activities']['values'].map( (activity, index) => (
-                  <li key={index} className="university__item">{activity}</li>
+                  <li key={index} className="about-university__item">{activity}</li>
                 ))
               }
             </ul>
-            <figure className="university__picture1">
+            <figure className="about-university__picture1">
               <img
-                className="university__image1"
+                className="about-university__image1"
                 src={educationTranslation['usil']['logo']['source']}
                 title={educationTranslation['usil']['logo']['title']}
                 alt={educationTranslation['usil']['logo']['alt']}
               />
             </figure>
-            <figure className="university__picture2">
+            <figure className="about-university__picture2">
               <img
-                className="university__image2"
+                className="about-university__image2"
                 src={educationTranslation['usil']['photo']['source']}
                 title={educationTranslation['usil']['photo']['title']}
                 alt={educationTranslation['usil']['photo']['alt']}
@@ -129,35 +128,35 @@ export const About: React.FC = () => {
             </figure>
           </div>
         </section>
-        <section className="certificates">
+        <section className="about-certificates">
           <h2
             id={routesTranslation['about']['subpath']['certificates']['path']}
-            className="certificates__title"
+            className="about-certificates__title"
             ref={ certificatesRef => refs.current[1] = { 'certificates': certificatesRef } }
           >
             {routesTranslation['about']['subpath']['certificates']['details']['name']}
           </h2>
           {
             certificatesTranslation.map( (certificate,index) => (
-              <div key={index} className="certificate">
-                <h3 className="certificate__name" lang={certificate['lang']}>
+              <div key={index} className="about-certificate">
+                <h3 className="about-certificate__name" lang={certificate['lang']}>
                   { certificate['title'] }
                 </h3>
                 {
                   certificate.hasOwnProperty('link') ? (
                     <a
-                      className="certificate__link"
+                      className="about-certificate__link"
                       href={(certificate as AboutCertificateWithLinkStrings)['link']['url']}
                       title={(certificate as AboutCertificateWithLinkStrings)['link']['title']}
                     >
                       <figure>
                         <img
-                          className="certificate__image"
+                          className="about-certificate__image"
                           src={certificate['image']['src']}
                           title={certificate['image']['title']}
                           alt={certificate['image']['alt']}
                         />
-                        <figcaption className="certificate__caption">{ certificate['caption'] }</figcaption>
+                        <figcaption className="about-certificate__caption">{ certificate['caption'] }</figcaption>
                       </figure>
                     </a>  
                   )
@@ -165,12 +164,12 @@ export const About: React.FC = () => {
                   (
                     <figure>
                       <img
-                        className="certificate__image"
+                        className="about-certificate__image"
                         src={certificate['image']['src']}
                         title={certificate['image']['title']}
                         alt={certificate['image']['alt']}
                       />
-                      <figcaption className="certificate__caption">{ certificate['caption'] }</figcaption>
+                      <figcaption className="about-certificate__caption">{ certificate['caption'] }</figcaption>
                     </figure>
                   )
                 }

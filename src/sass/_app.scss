@@ -1,0 +1,20 @@
+// 1. Configuration and helpers
+
+// 2. Vendors
+
+// 3. Base stuff
+@use 'base/reset';
+@use 'base/fonts';
+
+// 4. Layout-related sections
+@use 'layout/container';
+@use 'layout/header';
+@use 'layout/navigation';
+@use 'layout/breadcrumb';
+@use 'layout/footer';
+
+// 5. Components
+
+// 6. Page-specific styles
+
+// 7. Themes

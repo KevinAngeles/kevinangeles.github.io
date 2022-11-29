@@ -1,9 +1,6 @@
-@import "_navigation";
-
-///* header */
-$brand-initial-color: #58406f;
-$brand-final-color: #777;
-$header-language-name-color: #777;
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use 'navigation';
 
 .header {
   display: grid;

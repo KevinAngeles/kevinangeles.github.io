@@ -15,7 +15,7 @@ export const Contact: React.FC = () => {
   const contactTranslation = translation[locale]['contact'];
 
   return (
-    <main className="main">
+    <main className="contact-main">
       <HelmetProvider>
         <Helmet>
           <link rel="prev" href={`/#${translateRouteKeysToLocationPath(AppRoute.Portfolio,locale,defaultLanguage,true)}`} />
@@ -28,62 +28,60 @@ export const Contact: React.FC = () => {
             name="keywords"
             content={contactTranslation['head.keywords']}
           />
-          <link rel="stylesheet" href="/css/leaflet.css" />
-          <link rel="stylesheet" href="/css/contact.css" />
         </Helmet>
       </HelmetProvider>
       <Breadcrumbs language={locale} defaultLanguage={defaultLanguage} />
-      <div className="main__container">
-        <h1 className="main__title">{contactTranslation['title']}</h1>
+      <div className="contact-main__container">
+        <h1 className="contact-main__title">{contactTranslation['title']}</h1>
         <section
-          className="info"
+          className="contact-info"
           itemScope
           itemType="http://schema.org/Person"
         >
-          <h2 className="info__title">{contactTranslation['contact']['label']}</h2>
-          <div className="info__name" itemProp="name">
+          <h2 className="contact-info__title">{contactTranslation['contact']['label']}</h2>
+          <div className="contact-info__name" itemProp="name">
             <strong>{contactTranslation['contact']['name']}</strong>
           </div>
-          <div className="info__job" itemProp="jobtitle">{contactTranslation['contact']['job_title']}</div>
+          <div className="contact-info__job" itemProp="jobtitle">{contactTranslation['contact']['job_title']}</div>
           <div
-            className="info__address"
+            className="contact-info__address"
             itemProp="homeLocation address"
             itemScope
             itemType="http://schema.org/PostalAddress"
           >
-            <div className="info__locality" itemProp="addressLocality">
+            <div className="contact-info__locality" itemProp="addressLocality">
               {contactTranslation['contact']['address']['city']}
             </div>
-            <div className="info__region">
+            <div className="contact-info__region">
               <span itemProp="addressRegion">{contactTranslation['contact']['address']['state']}</span>
               <span itemProp="postalCode">{contactTranslation['contact']['address']['postalcode']}</span>
             </div>
-            <div className="info__country" itemProp="addressCountry">
+            <div className="contact-info__country" itemProp="addressCountry">
               {contactTranslation['contact']['address']['country']}
             </div>
           </div>
-          <div className="info__social">
+          <div className="contact-info__social">
             {contactTranslation['contact']['versioncontrol']['label']}:
             <a
-              className="info__social-link"
+              className="contact-info__social-link"
               href={contactTranslation['contact']['versioncontrol']['url']}
             >
               {contactTranslation['contact']['versioncontrol']['description']}
             </a>
           </div>
-          <div className="info__social">
+          <div className="contact-info__social">
             {contactTranslation['contact']['social']['linkedin']['label']}:
             <a
-              className="info__social-link"
+              className="contact-info__social-link"
               href={contactTranslation['contact']['social']['linkedin']['url']}
             >
               {contactTranslation['contact']['social']['linkedin']['description']}
             </a>
             </div>
         </section>
-        <section className="map">
-          <h2 className="map__title">{contactTranslation['map']['title']}</h2>
-          <div id="map-canvas" className="map__canvas">
+        <section className="contact-map">
+          <h2 className="contact-map__title">{contactTranslation['map']['title']}</h2>
+          <div id="contact-map-canvas" className="contact-map__canvas">
             <MapContainer center={[30.285934, -97.739446]} zoom={17} scrollWheelZoom={true}>
               <TileLayer
                 attribution='Austin, TX'
