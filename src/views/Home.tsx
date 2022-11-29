@@ -39,7 +39,6 @@ export const Home: React.FC = () => {
             name="keywords"
             content={homeTranslation['head.keywords']}
           />
-          <link rel="stylesheet" href="/css/index.css" />
         </Helmet>
       </HelmetProvider>
       <figure className="home-slide">
