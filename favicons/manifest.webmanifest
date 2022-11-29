@@ -1,7 +1,14 @@
 {
   "name": "Kevin Angeles",
   "short_name": "KevinAngeles",
+  "start_url": "/",
   "icons": [
+    {
+      "src": "/favicons/safari-pinned-tab.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    },
     {
       "src": "/favicons/favicon-16x16.png",
       "sizes": "16x16",
