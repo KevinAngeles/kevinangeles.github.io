@@ -30,8 +30,27 @@ export const Navigation: React.FC<INavigation> = ({locale,defaultLanguage,navCol
     },{} as {[id in ProjectId]:{url: string,name: string,title: string}}
   );
 
-  const [portfolioDropdownActive,setPorfolioDropdownActive] = useState(false);
   const [aboutDropdownActive,setAboutDropdownActive] = useState(false);
+  const [portfolioDropdownActive,setPorfolioDropdownActive] = useState(false);
+
+  const toggleAboutDropdown = (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+    event.stopPropagation()
+    event.nativeEvent.stopImmediatePropagation();
+    setAboutDropdownActive(!aboutDropdownActive);
+    setPorfolioDropdownActive(false);
+  };
+
+  const togglePortfolioDropdown = (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+    event.stopPropagation()
+    event.nativeEvent.stopImmediatePropagation();
+    setAboutDropdownActive(false);
+    setPorfolioDropdownActive(!portfolioDropdownActive);
+  };
+
+  const collapseDropdowns = (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+    setAboutDropdownActive(false);
+    setPorfolioDropdownActive(false);
+  };
 
   interface ITranslatedRoutes {
     home: {
@@ -122,6 +141,7 @@ export const Navigation: React.FC<INavigation> = ({locale,defaultLanguage,navCol
       >
         <li
           className={`site-navigation__item${ (currentRouteKey === AppRoute.Home) ? ' site-navigation__item--active' : ''}`}
+          onClick={(event) => collapseDropdowns(event)}
         >
           <Link 
             to={translatedRoutes['home']['url']}
@@ -133,13 +153,13 @@ export const Navigation: React.FC<INavigation> = ({locale,defaultLanguage,navCol
         </li>
         <li
           className={`site-navigation__item site-navigation__dropdown${ (currentRouteKey === AppRoute.About) ? ' site-navigation__item--active' : ''}${ aboutDropdownActive ? ' site-navigation__dropdown--show' : ''}`}
-          onMouseEnter={() => setAboutDropdownActive(true)}
-          onMouseLeave={() => setAboutDropdownActive(false)}
+          onClick={(event) => toggleAboutDropdown(event)}
         >
           <Link
             to={translatedRoutes['about']['index']['url']}
             title={translatedRoutes['about']['index']['title']}
             className="site-navigation__link site-navigation__link--dropdown"
+            onClick={(event) => {event.preventDefault()}}
           >
             {translatedRoutes['about']['index']['name']}
           </Link>
@@ -168,13 +188,13 @@ export const Navigation: React.FC<INavigation> = ({locale,defaultLanguage,navCol
         </li>
         <li
           className={`site-navigation__item site-navigation__dropdown${ (currentRouteKey === AppRoute.Portfolio) ? ' site-navigation__item--active' : ''}${ portfolioDropdownActive ? ' site-navigation__dropdown--show' : ''}`}
-          onMouseEnter={() => setPorfolioDropdownActive(true)}
-          onMouseLeave={() => setPorfolioDropdownActive(false)}
+          onClick={(event) => togglePortfolioDropdown(event)}
         >
           <Link
             to={translatedRoutes['portfolio']['index']['url']}
             title={translatedRoutes['portfolio']['index']['title']}
             className="site-navigation__link site-navigation__link--dropdown"
+            onClick={(event) => {event.preventDefault()}}
           >
             {translatedRoutes['portfolio']['index']['name']}
           </Link>
@@ -203,6 +223,7 @@ export const Navigation: React.FC<INavigation> = ({locale,defaultLanguage,navCol
         </li>
         <li
           className={`site-navigation__item${ (currentRouteKey === AppRoute.Contact) ? ' site-navigation__item--active' : ''}`}
+          onClick={(event) => collapseDropdowns(event)}
         >
           <Link
             to={translatedRoutes['contact']['url']}
