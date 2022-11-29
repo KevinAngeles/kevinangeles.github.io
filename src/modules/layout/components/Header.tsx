@@ -3,8 +3,9 @@ import { useLocation } from 'react-router-dom';
 import { LanguageContext } from '../../i18n';
 import { Flag, ILanguagePath } from './Flag';
 import { Navigation } from './Navigation';
-import { translateLocationPathToOtherLanguage } from '../../../utils';
-import { availableLocales, ILanguage, translation } from '../../../const';
+import { translateLocationPathToOtherLanguage, translateRouteKeysToLocationPath } from '../../../utils';
+import { AppRoute, availableLocales, ILanguage, translation } from '../../../const';
+import { Link } from 'react-router-dom';
 
 export const Header = () => {
   const {
@@ -32,11 +33,7 @@ export const Header = () => {
     }
   );
 
-  let homePath = '/';
-
-  if(locale !== defaultLanguage) {
-    homePath += `${locale}/`;
-  }
+  let homePath = translateRouteKeysToLocationPath(AppRoute.Home,locale,defaultLanguage,true);
 
   const appTranslation = translation[locale]['app'];
   const [navCollapsed,setNavCollapsed] = useState(true);
@@ -47,12 +44,12 @@ export const Header = () => {
 
   return (
     <header className="header">
-      <a href={homePath} className="header__brand" title={appTranslation['brand_link_title']}>
+      <Link to={homePath} className="header__brand" title={appTranslation['brand_link_title']}>
         <h1 className="header__brand-title">
           <span className="header__brand-text">Kevin </span>
           <span className="header__brand-text">Angeles</span>
         </h1>
-      </a>
+      </Link>
       <div className="header__language">
         {
           languagesWithoutDefault.map( languageObject => (

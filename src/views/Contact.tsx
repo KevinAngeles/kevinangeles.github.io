@@ -18,7 +18,7 @@ export const Contact: React.FC = () => {
     <main className="main">
       <HelmetProvider>
         <Helmet>
-          <link rel="prev" href={translateRouteKeysToLocationPath(AppRoute.Portfolio,locale,defaultLanguage)} />
+          <link rel="prev" href={`/#${translateRouteKeysToLocationPath(AppRoute.Portfolio,locale,defaultLanguage,true)}`} />
           <title>{contactTranslation['head.title']}</title>
           <meta
             name="description"
@@ -75,7 +75,7 @@ export const Contact: React.FC = () => {
             {contactTranslation['contact']['social']['linkedin']['label']}:
             <a
               className="info__social-link"
-              href="{{ __('contact.contact.social.linkedin.url') }}"
+              href={contactTranslation['contact']['social']['linkedin']['url']}
             >
               {contactTranslation['contact']['social']['linkedin']['description']}
             </a>

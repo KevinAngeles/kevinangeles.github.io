@@ -29,7 +29,7 @@ export const Home: React.FC = () => {
     <main className="main">
       <HelmetProvider>
         <Helmet>
-          <link rel="next" href={translateRouteKeysToLocationPath('about',locale,defaultLanguage)}/>
+          <link rel="next" href={`/#${translateRouteKeysToLocationPath('about',locale,defaultLanguage,true)}`} />
           <title>{homeTranslation['head.title']}</title>
           <meta
             name="description"

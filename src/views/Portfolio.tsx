@@ -37,8 +37,8 @@ export const Portfolio: React.FC = () => {
     <main className="main">
       <HelmetProvider>
         <Helmet>
-          <link rel="prev" href={translateRouteKeysToLocationPath(AppRoute.About,locale,defaultLanguage)} />
-          <link rel="next" href={translateRouteKeysToLocationPath(AppRoute.Contact,locale,defaultLanguage)} />
+          <link rel="prev" href={`/#${translateRouteKeysToLocationPath(AppRoute.About,locale,defaultLanguage,true)}`} />
+          <link rel="next" href={`/#${translateRouteKeysToLocationPath(AppRoute.Contact,locale,defaultLanguage,true)}`} />
           <title>{portfolioTranslation['head.title']}</title>
           <meta
             name="description"

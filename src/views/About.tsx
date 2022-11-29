@@ -39,8 +39,8 @@ export const About: React.FC = () => {
     <main className="main">
       <HelmetProvider>
         <Helmet>
-          <link rel="prev" href={translateRouteKeysToLocationPath(AppRoute.Home,locale,defaultLanguage)} />
-          <link rel="next" href={translateRouteKeysToLocationPath(AppRoute.Portfolio,locale,defaultLanguage)} />
+          <link rel="prev" href={`/#${translateRouteKeysToLocationPath(AppRoute.Home,locale,defaultLanguage,true)}`} />
+          <link rel="next" href={`/#${translateRouteKeysToLocationPath(AppRoute.Portfolio,locale,defaultLanguage,true)}`} />
           <title>{aboutTranslation['head.title']}</title>
           <meta
             name="description"
