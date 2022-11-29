@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef } from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { LanguageContext } from '../modules/i18n';
-import { ILanguage, translation } from '../const';
+import { AppRoute, ILanguage, translation } from '../const';
 import { translateLocationPathToRouteKeys, translateRouteKeysToLocationPath } from '../utils';
 import { AboutCertificateWithLinkStrings } from '../modules/i18n/localizations/localizationTypes/AboutStrings';
 import { Breadcrumbs } from '../modules/layout/components/Breadcrumbs';
@@ -32,15 +32,15 @@ export const About: React.FC = () => {
         }
         return false;
       });  
-    },0);
+    },100);
   },[]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <main className="main">
       <HelmetProvider>
         <Helmet>
-          <link rel="prev" href={translateRouteKeysToLocationPath('home',locale,defaultLanguage)} />
-          <link rel="next" href={translateRouteKeysToLocationPath('portfolio',locale,defaultLanguage)} />
+          <link rel="prev" href={translateRouteKeysToLocationPath(AppRoute.Home,locale,defaultLanguage)} />
+          <link rel="next" href={translateRouteKeysToLocationPath(AppRoute.Portfolio,locale,defaultLanguage)} />
           <title>{aboutTranslation['head.title']}</title>
           <meta
             name="description"
@@ -50,7 +50,7 @@ export const About: React.FC = () => {
             name="keywords"
             content={aboutTranslation['head.keywords']}
           />
-          <link rel="stylesheet" href="/css/about.css" media="screen" />
+          <link rel="stylesheet" href="/css/about.css" />
         </Helmet>
       </HelmetProvider>
       <Breadcrumbs language={locale} defaultLanguage={defaultLanguage} />

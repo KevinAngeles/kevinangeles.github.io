@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import { AppRoute, ILanguage, translation } from '../../../const';
 import { translateLocationPathToRouteKeys, translateRouteKeysToLocationPath } from '../../../utils';
 
-export const Navigation: React.FC<ILanguage> = ({locale,defaultLanguage}) => {
+interface INavigation extends ILanguage {
+  navCollapsed: boolean
+}
+
+export const Navigation: React.FC<INavigation> = ({locale,defaultLanguage,navCollapsed}) => {
   const location = useLocation();
   const pathname = location.pathname;
   const currentRouteKey = translateLocationPathToRouteKeys(pathname,locale,defaultLanguage);
@@ -24,6 +29,9 @@ export const Navigation: React.FC<ILanguage> = ({locale,defaultLanguage}) => {
       return accumulator;
     },{} as {[id in ProjectId]:{url: string,name: string,title: string}}
   );
+
+  const [portfolioDropdownActive,setPorfolioDropdownActive] = useState(false);
+  const [aboutDropdownActive,setAboutDropdownActive] = useState(false);
 
   interface ITranslatedRoutes {
     home: {
@@ -109,8 +117,12 @@ export const Navigation: React.FC<ILanguage> = ({locale,defaultLanguage}) => {
 
   return (
     <nav className="site-navigation">
-      <ul className="site-navigation__list site-navigation__list--collapsed">
-        <li className={`site-navigation__item${ (currentRouteKey === AppRoute.Home) && ' site-navigation__item--active'}`}>
+      <ul
+        className={`site-navigation__list${ navCollapsed ? ' site-navigation__list--collapsed' : ''}`}
+      >
+        <li
+          className={`site-navigation__item${ (currentRouteKey === AppRoute.Home) ? ' site-navigation__item--active' : ''}`}
+        >
           <Link 
             to={translatedRoutes['home']['url']}
             title={translatedRoutes['home']['title']}
@@ -119,7 +131,11 @@ export const Navigation: React.FC<ILanguage> = ({locale,defaultLanguage}) => {
             {translatedRoutes['home']['name']}
           </Link>
         </li>
-        <li className={`site-navigation__item site-navigation__dropdown${ (currentRouteKey === AppRoute.About) && ' site-navigation__item--active'}`}>
+        <li
+          className={`site-navigation__item site-navigation__dropdown${ (currentRouteKey === AppRoute.About) ? ' site-navigation__item--active' : ''}${ aboutDropdownActive ? ' site-navigation__dropdown--show' : ''}`}
+          onMouseEnter={() => setAboutDropdownActive(true)}
+          onMouseLeave={() => setAboutDropdownActive(false)}
+        >
           <Link
             to={translatedRoutes['about']['index']['url']}
             title={translatedRoutes['about']['index']['title']}
@@ -127,28 +143,34 @@ export const Navigation: React.FC<ILanguage> = ({locale,defaultLanguage}) => {
           >
             {translatedRoutes['about']['index']['name']}
           </Link>
-          <ul className="site-navigation__sublist" role="menu">
+          <ul
+            className={`site-navigation__sublist${ aboutDropdownActive ? ' site-navigation__sublist--active site-navigation__sublist--open' : ''}`}
+          >
             <li className="site-navigation__subitem">
-              <Link
+              <HashLink
                 to={translatedRoutes['about']['education']['url']}
                 title={translatedRoutes['about']['education']['title']}
                 className="site-navigation__sublink"
               >
                 {translatedRoutes['about']['education']['name']}
-              </Link>
+              </HashLink>
             </li>
             <li className="site-navigation__subitem">
-              <Link
+              <HashLink
                 to={translatedRoutes['about']['certificates']['url']}
                 title={translatedRoutes['about']['certificates']['url']}
                 className="site-navigation__sublink"
               >
                 {translatedRoutes['about']['certificates']['name']}
-              </Link>
+              </HashLink>
             </li>
           </ul>
         </li>
-        <li className={`site-navigation__item site-navigation__dropdown${ (currentRouteKey === AppRoute.Portfolio) && ' site-navigation__item--active'}`}>
+        <li
+          className={`site-navigation__item site-navigation__dropdown${ (currentRouteKey === AppRoute.Portfolio) ? ' site-navigation__item--active' : ''}${ portfolioDropdownActive ? ' site-navigation__dropdown--show' : ''}`}
+          onMouseEnter={() => setPorfolioDropdownActive(true)}
+          onMouseLeave={() => setPorfolioDropdownActive(false)}
+        >
           <Link
             to={translatedRoutes['portfolio']['index']['url']}
             title={translatedRoutes['portfolio']['index']['title']}
@@ -156,7 +178,9 @@ export const Navigation: React.FC<ILanguage> = ({locale,defaultLanguage}) => {
           >
             {translatedRoutes['portfolio']['index']['name']}
           </Link>
-          <ul className="site-navigation__sublist" role="menu">
+          <ul
+            className={`site-navigation__sublist${ portfolioDropdownActive ? ' site-navigation__sublist--active site-navigation__sublist--open' : ''}`}
+          >
             {
               Object.entries(projects).map(project => {
                 const projectId = project[0];
@@ -164,20 +188,22 @@ export const Navigation: React.FC<ILanguage> = ({locale,defaultLanguage}) => {
 
                 return (
                   <li key={projectId} className="site-navigation__subitem">
-                    <Link
+                    <HashLink
                       to={projectDetails['url']}
                       title={projectDetails['title']}
                       className="site-navigation__sublink"
                     >
                       {projectDetails['name']}
-                    </Link>
+                    </HashLink>
                   </li>
                 );
               })
             }
           </ul>
         </li>
-        <li className={`site-navigation__item${ (currentRouteKey === AppRoute.Contact) && ' site-navigation__item--active'}`}>
+        <li
+          className={`site-navigation__item${ (currentRouteKey === AppRoute.Contact) ? ' site-navigation__item--active' : ''}`}
+        >
           <Link
             to={translatedRoutes['contact']['url']}
             title={translatedRoutes['contact']['title']}

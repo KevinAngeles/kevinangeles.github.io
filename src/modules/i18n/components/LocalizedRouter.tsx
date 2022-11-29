@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, useParams, useLocation, Routes, HashRouter } from 'react-router-dom';
+import { Route, useLocation, Routes, HashRouter } from 'react-router-dom';
 import { Language, availableLocales, ILanguage } from '../../../const';
 
 export const LanguageContext = React.createContext<ILanguage | null>(null)
@@ -22,8 +22,6 @@ const LocalizedRoute: React.FC<IRoute> = ({
    * Get current language
    * Set default locale to en if base path is used without a language
    */
-  const params = useParams();
-
   const languagesWithoutDefault: Language[] =
     Object.values(availableLocales)
       .filter(
@@ -47,7 +45,6 @@ const LocalizedRoute: React.FC<IRoute> = ({
 
   console.log(`lang is: ${JSON.stringify(lang)}`);
   console.log(`location is: ${JSON.stringify(location)}`);
-  console.log(`params: ${JSON.stringify(params)}`);
 
   const languageDetails = {
     locale: lang,

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { LanguageContext } from '../modules/i18n';
-import { ILanguage, translation } from '../const';
+import { AppRoute, ILanguage, translation } from '../const';
 import { translateRouteKeysToLocationPath } from '../utils';
 import { Breadcrumbs } from '../modules/layout/components/Breadcrumbs';
 import { MapContainer, TileLayer } from 'react-leaflet';
@@ -18,7 +18,7 @@ export const Contact: React.FC = () => {
     <main className="main">
       <HelmetProvider>
         <Helmet>
-          <link rel="prev" href={translateRouteKeysToLocationPath('portfolio',locale,defaultLanguage)} />
+          <link rel="prev" href={translateRouteKeysToLocationPath(AppRoute.Portfolio,locale,defaultLanguage)} />
           <title>{contactTranslation['head.title']}</title>
           <meta
             name="description"
@@ -29,7 +29,7 @@ export const Contact: React.FC = () => {
             content={contactTranslation['head.keywords']}
           />
           <link rel="stylesheet" href="/css/leaflet.css" />
-          <link rel="stylesheet" href="/css/contact.css" media="screen" />
+          <link rel="stylesheet" href="/css/contact.css" />
         </Helmet>
       </HelmetProvider>
       <Breadcrumbs language={locale} defaultLanguage={defaultLanguage} />

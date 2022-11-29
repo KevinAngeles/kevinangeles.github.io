@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef } from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { LanguageContext } from '../modules/i18n';
-import { translation, ILanguage } from '../const';
+import { translation, ILanguage, AppRoute } from '../const';
 import { translateLocationPathToRouteKeys, translateRouteKeysToLocationPath } from '../utils';
 import { Breadcrumbs } from '../modules/layout/components/Breadcrumbs';
 import { useLocation } from 'react-router-dom';
@@ -30,15 +30,15 @@ export const Portfolio: React.FC = () => {
         }
         return false;
       });  
-    },0);
+    },100);
   },[]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <main className="main">
       <HelmetProvider>
         <Helmet>
-          <link rel="prev" href={translateRouteKeysToLocationPath('about',locale,defaultLanguage)} />
-          <link rel="next" href={translateRouteKeysToLocationPath('contact',locale,defaultLanguage)} />
+          <link rel="prev" href={translateRouteKeysToLocationPath(AppRoute.About,locale,defaultLanguage)} />
+          <link rel="next" href={translateRouteKeysToLocationPath(AppRoute.Contact,locale,defaultLanguage)} />
           <title>{portfolioTranslation['head.title']}</title>
           <meta
             name="description"
@@ -48,7 +48,7 @@ export const Portfolio: React.FC = () => {
             name="keywords"
             content={portfolioTranslation['head.keywords']}
           />
-          <link rel="stylesheet" href="/css/portfolio.css" media="screen" />
+          <link rel="stylesheet" href="/css/portfolio.css" />
         </Helmet>
       </HelmetProvider>
       <Breadcrumbs language={locale} defaultLanguage={defaultLanguage} />

@@ -15,10 +15,6 @@ export const LocalizedSwitch: React.FC<Props> = ({ children }) => {
     locale,
   } = useContext(LanguageContext) as ILanguage;
   /**
-   * inject params and formatMessage through hooks, so we can localize the route
-   */
-  console.log(`locale is: ${JSON.stringify(locale)}`);
-  /**
    *
    * @param path can be string, undefined or string array
    * @returns Localized string path or path array

@@ -86,7 +86,7 @@ export const projects: ProjectStrings = {
     }
   },*/
   'hangman': {
-    'path': 'nytredux',
+    'path': 'hangman',
     'details': {
       'id': 'project05',
       'name': 'Hangman',

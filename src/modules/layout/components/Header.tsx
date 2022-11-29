@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { LanguageContext } from '../../i18n';
 import { Flag, ILanguagePath } from './Flag';
@@ -14,7 +14,6 @@ export const Header = () => {
 
   const location = useLocation();
   const parsedLocation = location.pathname + ((location.hash.length > 0) ? location.hash : '');
-  console.log(`Header parsedLocation ${parsedLocation}`);
   const languagesWithoutDefault: ILanguagePath[] = Object
     .values(availableLocales)
     .filter(language => language !== locale)
@@ -40,6 +39,11 @@ export const Header = () => {
   }
 
   const appTranslation = translation[locale]['app'];
+  const [navCollapsed,setNavCollapsed] = useState(true);
+
+  const toggleNavbar = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    setNavCollapsed(!navCollapsed);
+  }
 
   return (
     <header className="header">
@@ -56,13 +60,17 @@ export const Header = () => {
           ))
         }
       </div>
-      <button className="header__navbar-toggle">
+      <button
+        className="header__navbar-toggle"
+        type="button"
+        onClick={(event) => toggleNavbar(event)}
+      >
         <span className="header__navbar-sr-only">{appTranslation['sr_only']}</span>
         <span className="header__navbar-toggle-bar"></span>
         <span className="header__navbar-toggle-bar"></span>
         <span className="header__navbar-toggle-bar"></span>
       </button>
-      <Navigation locale={locale} defaultLanguage={defaultLanguage}/>
+      <Navigation locale={locale} defaultLanguage={defaultLanguage} navCollapsed={navCollapsed}/>
     </header>
   );
 }

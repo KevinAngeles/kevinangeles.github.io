@@ -37,7 +37,6 @@ export const translateRouteKeysToLocationPath = (
   includeLanguagePrefix?: boolean,
 ):string => {
   try {
-    console.log(`utils routekeys: ${routeKeys} language:${language} default:${defaultLanguage}`);
     if(routeKeys === '') {
       throw new Error("routeKeys is empty.");
     } else if(/\s/.test(routeKeys)) {
@@ -160,8 +159,7 @@ export const translateLocationPathToRouteKeys = (
     let languageRouteItem = {} as IPathStrings[string];
     let lastKey:string|undefined = "";
 
-    let originalRouteKeys = '';
-    originalRouteKeys += locationPathArray.map(
+    let originalRouteKeys = locationPathArray.map(
       (path,index) => {
         let routeKey = path;
 
@@ -235,14 +233,12 @@ export const translateLocationPathToOtherLanguage = (
     locale,
     defaultLanguage
   );
-  console.log(`utils locationPath ${locationPath} originalRouteKeys ${originalRouteKeys}`);
   const translatedPath = translateRouteKeysToLocationPath(
     originalRouteKeys,
     language,
     defaultLanguage,
     true
   );
-  console.log(`===utils locationPath ${locationPath} locationPath ${translatedPath}===`);
 
   return translatedPath;
 };
