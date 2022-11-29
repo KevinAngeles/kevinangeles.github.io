@@ -102,8 +102,7 @@
   }
 }
 
-
-@include media-query-small {
+@include media-query-small-and-below {
   .about- {
     &university {
       grid-template-columns: auto 1fr;

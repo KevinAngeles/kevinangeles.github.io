@@ -145,7 +145,8 @@
     }
   }
 }
-@include media-query-small {
+
+@include media-query-small-and-below {
   .footer {
     &__contact {
       grid-template-columns: 1fr;

@@ -100,7 +100,7 @@
   }
 }
 
-@include media-query-small {
+@include media-query-small-and-below {
   .home- {
     &slide {
       &__description {
@@ -111,6 +111,13 @@
     &service {
       grid-template-columns: 1fr;
       height: auto;
+      &__name {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      &__card {
+        padding-bottom: 20px;
+      }
     }
     &project {
       &__container {
@@ -131,18 +138,6 @@
         width: 210px;
         height: 170px;
       }
-    }
-  }
-}
-
-@include media-query-small {
-  .home- {
-    &service__name {
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
-    &service__card {
-      padding-bottom: 20px;
     }
   }
 }

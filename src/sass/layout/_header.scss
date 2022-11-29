@@ -104,22 +104,18 @@
     }
   }
 }
-@include media-query-medium {
+
+@include media-query-extra-small {
   .header {
-    grid-template-areas: "brand language" "navigation navigation";
-    grid-template-rows: 92px 1fr;
-    height: unset;
-    max-height: unset;
-    &__language {
-      align-items: flex-start;
-      &-link {
-        padding-top: 10px;
+    &__brand {
+      &-title {
+        font-size: 30px,
       }
     }
   }
 }
 
-@include media-query-small {
+@include media-query-small-and-below {
   .header {
     grid-template-areas: "brand language" "brand toggle" "navigation navigation";
     height: unset;
@@ -138,6 +134,21 @@
       border-top: 1px solid #e7e7e7;
       padding: 10px 10px 0;
       margin: 0 auto;
+    }
+  }
+}
+
+@include media-query-medium {
+  .header {
+    grid-template-areas: "brand language" "navigation navigation";
+    grid-template-rows: 92px 1fr;
+    height: unset;
+    max-height: unset;
+    &__language {
+      align-items: flex-start;
+      &-link {
+        padding-top: 10px;
+      }
     }
   }
 }

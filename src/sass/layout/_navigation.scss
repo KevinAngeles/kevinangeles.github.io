@@ -117,15 +117,7 @@
   }
 }
 
-@include media-query-medium {
-  .site-navigation {
-    &__list {
-      justify-content: flex-end;
-    }
-  }
-}
-
-@include media-query-small {
+@include media-query-small-and-below {
   .site-navigation {
     &__list {
       flex-flow: column;
@@ -161,6 +153,14 @@
       &:hover {
         color: #333;
       }
+    }
+  }
+}
+
+@include media-query-medium {
+  .site-navigation {
+    &__list {
+      justify-content: flex-end;
     }
   }
 }

@@ -1,7 +1,19 @@
 @use 'variables' as *;
 
-@mixin media-query-small {
+@mixin media-query-small-and-below {
   @media only screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin media-query-extra-small {
+  @media only screen and (max-width: 576px) {
+    @content;
+  }
+}
+
+@mixin media-query-small {
+  @media only screen and (min-width: 576px) and (max-width: 768px) {
     @content;
   }
 }
@@ -21,6 +33,7 @@
 @mixin default-link {
   color: #337ab7;
   text-decoration: none;
+  word-wrap: break-word;
   &:hover,
   &:focus {
     color: #23527c;

@@ -33,23 +33,12 @@ ol {
 }
 
 .leaflet-container {
-  height:500px;
-  width:650px;
+  height: 100%;
+  width: 100%;
 }
 
 @include media-query-medium {
   .container {
     width: 750px;
-  }
-  .leaflet-container {
-    height:350px;
-    width:500px;
-  }
-}
-
-@include media-query-small {
-  .leaflet-container {
-    height: 200px;
-    width: 340px;
   }
 }

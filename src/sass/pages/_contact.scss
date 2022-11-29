@@ -63,17 +63,12 @@
   }
 }
 
-@include media-query-medium {
+@include media-query-extra-small {
   .contact- {
-    &main {
-      &__container {
-        grid-template-columns: 1fr 540px;
-      }
-    }
     &map {
       &__canvas {
-        height: 350px;
-        width: 500px;
+        height: 200px;
+        width: 200px;
       }
     }
   }
@@ -81,17 +76,38 @@
 
 @include media-query-small {
   .contact- {
+    &map {
+      &__canvas {
+        height: 380px;
+        width: 380px;
+      }
+    }
+  }
+}
+
+@include media-query-small-and-below {
+  .contact- {
     &main {
       &__container {
         grid-template-areas: "title" "info" "map";
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0,1fr);
         padding-bottom: 20px;
+      }
+    }
+  }
+}
+
+@include media-query-medium {
+  .contact- {
+    &main {
+      &__container {
+        grid-template-columns: minmax(0,1fr) 540px;
       }
     }
     &map {
       &__canvas {
-        height: 200px;
-        width: 340px;
+        height: 350px;
+        width: 500px;
       }
     }
   }
