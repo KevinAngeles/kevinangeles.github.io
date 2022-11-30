@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, useLocation, Routes, HashRouter } from 'react-router-dom';
 import { Language, availableLocales, ILanguage } from '../../../const';
+import { useAnalytics } from '../../../utils';
 
 export const LanguageContext = React.createContext<ILanguage | null>(null)
 
@@ -50,6 +51,8 @@ const LocalizedRoute: React.FC<IRoute> = ({
     locale: lang,
     defaultLanguage: defaultLanguage
   }
+
+  useAnalytics();
 
   return (
     <LanguageContext.Provider value={languageDetails}>

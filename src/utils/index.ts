@@ -1,5 +1,6 @@
 import { Language, translation } from "../const";
 import { IPathStrings } from "../modules/i18n/localizations/localizationTypes/RouteStrings";
+export { useAnalytics } from "./useAnalytics";
 
 /**
  * Create language prefix.
