@@ -10,7 +10,7 @@
 import { clientsClaim } from 'workbox-core';
 import { ExpirationPlugin } from 'workbox-expiration';
 import { precacheAndRoute, createHandlerBoundToURL } from 'workbox-precaching';
-import { registerRoute } from 'workbox-routing';
+import { NavigationRoute, registerRoute } from 'workbox-routing';
 import { StaleWhileRevalidate } from 'workbox-strategies';
 
 clientsClaim();
@@ -19,38 +19,51 @@ clientsClaim();
 // Their URLs are injected into the manifest variable below.
 // This variable must be present somewhere in your service worker file,
 // even if you decide not to use precaching. See https://cra.link/PWA
-precacheAndRoute(self.__WB_MANIFEST);
+precacheAndRoute([
+  {'revision':null,'url':'/css/leaflet.css'},
+  {'revision':null,'url':'/css/style.css'},
+  {'revision':null,'url':'/images/flags/english-flag-small.gif'},
+  {'revision':null,'url':'/images/flags/spanish-flag-small.gif'},
+  {'revision':null,'url':'/images/universities/usil.jpg'},
+  {'revision':null,'url':'/images/universities/usil_banner.jpg'},
+  {'revision':null,'url':'/images/universities/usil_logo.png'},
+  {'revision':null,'url':'/images/universities/utexas.jpg'},
+  {'revision':null,'url':'/images/universities/utexas_logo.png'},
+  {'revision':null,'url':'/images/universities/utexas_logo02.jpg'},
+  {'revision':null,'url':'/images/slider/slide1.jpg'},
+  {'revision':null,'url':'/images/icons/icon1.png'},
+  {'revision':null,'url':'/images/icons/icon2.png'},
+  {'revision':null,'url':'/images/icons/icon3.png'},
+  {'revision':null,'url':'/images/featured_works/bridgesaustin.jpg'},
+  {'revision':null,'url':'/images/featured_works/createdby.jpg'},
+  {'revision':null,'url':'/images/featured_works/hangman.jpg'},
+  {'revision':null,'url':'/images/featured_works/linass.jpg'},
+  {'revision':null,'url':'/images/featured_works/nytredux.jpg'},
+  {'revision':null,'url':'/images/featured_works/spotxlsx.jpg'},
+  {'revision':null,'url':'/images/certificates/microsoft_logo.png'},
+  {'revision':null,'url':'/images/certificates/mcp_logo.jpg'},
+  {'revision':null,'url':'/images/certificates/mos_excel.png'},
+  {'revision':null,'url':'/images/certificates/mos_powerpoint.png'},
+  {'revision':null,'url':'/images/certificates/mos_word.png'},
+  {'revision':null,'url':'/images/certificates/ms_proghtml5.png'},
+  {'revision':null,'url':'/images/certificates/platzi_logo.png'},
+  ...self.__WB_MANIFEST
+]);
 
-// Set up App Shell-style routing, so that all navigation requests
-// are fulfilled with your index.html shell. Learn more at
-// https://developers.google.com/web/fundamentals/architecture/app-shell
-const fileExtensionRegexp = new RegExp('/[^/?]+\\.[^/]+$');
-registerRoute(
-  // Return false to exempt requests from being fulfilled by index.html.
-  ({ request, url }) => {
-    // If this isn't a navigation, skip.
-    if (request.mode !== 'navigate') {
-      return false;
-    } // If this is a URL that starts with /_, skip.
-
-    if (url.pathname.startsWith('/_')) {
-      return false;
-    } // If this looks like a URL for a resource, because it contains // a file extension, skip.
-
-    if (url.pathname.match(fileExtensionRegexp)) {
-      return false;
-    } // Return true to signal that we want to use the handler.
-
-    return true;
-  },
-  createHandlerBoundToURL(process.env.PUBLIC_URL + '/index.html')
-);
+const handler = createHandlerBoundToURL(process.env.PUBLIC_URL + '/index.html');
+const navigationRoute = new NavigationRoute(handler, {
+  allowlist: [
+    /^\/$/,
+  ],
+  denylist: [],
+});
+registerRoute(navigationRoute);
 
 // An example runtime caching route for requests that aren't handled by the
 // precache, in this case same-origin .png requests like those from in public/
 registerRoute(
   // Add in any other file extensions or routing criteria as needed.
-  ({ url }) => url.origin === self.location.origin && url.pathname.endsWith('.png'), // Customize this strategy as needed, e.g., by changing to CacheFirst.
+  ({ url }) => url.origin === self.location.origin && url.pathname.match(/.(png|gif|jpg|svg)$/), // Customize this strategy as needed, e.g., by changing to CacheFirst.
   new StaleWhileRevalidate({
     cacheName: 'images',
     plugins: [
