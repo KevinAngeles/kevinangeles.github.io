@@ -9,15 +9,15 @@ import * as analytics from './ga4';
  */
 export const useAnalytics = () => {
   const location = useLocation();
+  const path = `${location.pathname}${location.hash}`;
 
   React.useEffect(() => {
     analytics.init();
   }, [])
 
   React.useEffect(() => {
-    const path = `${location.pathname}${location.hash}`;
     analytics.sendGAPageview(path);
-  }, [location])
+  }, [path])
 }
 
 export default useAnalytics;
