@@ -18,11 +18,11 @@ export type ProjectDetailsStrings = {
 }
 
 export type ProjectStrings = {
-  /*'xlsx': {
+  'xlsx': {
     'path': string,
     'details': ProjectDetailsStrings,
   },
-  'bridges': {
+  /*'bridges': {
     'path': string,
     'details': ProjectDetailsStrings,
   },*/

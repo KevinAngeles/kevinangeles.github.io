@@ -1,7 +1,7 @@
 import { ProjectStrings } from "../localizationTypes/ProjectStrings";
 
 export const projects: ProjectStrings = {
-  /*'xlsx': {
+  'xlsx': {
     'path': 'xlsx',
     'details': {
       'id': 'project01',
@@ -15,14 +15,14 @@ export const projects: ProjectStrings = {
       'code.link': 'https://github.com/KevinAngeles/spotxlsx',
       'code.description': 'https://github.com/KevinAngeles/spotxlsx',
       'demo.label': 'Demo',
-      'demo.link': 'https://spotxlsx.herokuapp.com',
-      'demo.description': 'https://spotxlsx.herokuapp.com',
+      'demo.link': 'https://spotxlsx.vercel.app',
+      'demo.description': 'https://spotxlsx.vercel.app',
       'technology.label': 'Technologies',
-      'technology.items': ['Node.js', 'React.js', 'Redux', 'Passport.js'],
+      'technology.items': ['Node.js', 'React.js', 'TypeScript', 'Next.js', 'NextAuth.js', 'MongoDB', 'Material UI', 'Excel4node'],
       'navigation.title': 'Go to Spotxlsx description'
     }
   },
-  'bridges': {
+  /*'bridges': {
     'path': 'bridges',
     'details': {
       'id': 'project02',
